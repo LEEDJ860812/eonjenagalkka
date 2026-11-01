@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: eonjenagalkka
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: NAVER_CLIENT_ID
+        sync: false
+      - key: GBIS_KEY
+        sync: false
+      - key: TMAP_KEY
+        sync: false
+      - key: SEOUL_SUBWAY_KEY
+        sync: false
